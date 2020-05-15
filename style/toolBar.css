@@ -1,0 +1,36 @@
+/* ========= START TOOL BAR ============= */
+#toolBar {
+    position: fixed;
+    width:  calc(50px + 1.4vw); /*toolbar min 40px will grade up according to screen width vw */
+    height: 100vh;
+    background:  #141414;
+    border-right: .05px solid rgb(112, 112, 112);
+    margin: 0;
+    padding: 0;
+    }
+ 
+.toolBarIcon {
+    z-index:15;
+    position: fixed;
+    cursor: pointer;
+    display: inline;
+    margin-left: calc(2px + 1.2vw); 
+    width: 25px;
+    }
+
+
+#accountIcon{
+    z-index:15;
+    position: fixed;
+    cursor: pointer;
+    display: inline;
+    margin-left: calc(2px + 1.2vw); 
+    top: 85vh;
+    }
+
+.nav {
+    margin: 2vh 15%;
+}
+
+/* ========= END TOOL BAR ============= */
+

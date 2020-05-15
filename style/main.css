@@ -1,0 +1,1176 @@
+/*
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Old Standard TT', serif;
+*/
+/* ===============================*/
+/*                                                               */
+/*                       CSS RESET                         */
+/*                                                              */
+/*===============================*/
+* { /*css reset */
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    outline: none; 
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*fallback fonts*/
+    font-family: 'Old Standard TT', serif;
+    color: rgb(20, 20, 20);
+    }
+/* ===============================*/
+/*                                                               */
+/*                       TEXT                                 */
+/*                                                              */
+/*===============================*/
+.title1 { /* search stories title */
+    font-size: calc(2rem + .9vw);
+    text-align: center;
+    cursor: pointer;
+
+}
+.title2 {
+    font-size: calc(1.5rem + .9vw);
+}
+.title3 {
+    font-size: calc(1rem + .5vw);
+}
+.smallText {
+    font-size: calc(14px + .2vw);
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    margin: .8% 0 .8% 0
+}
+.medText {
+    font-size: calc(18px + .2vw);
+}
+.medTextRale{
+    font-size: calc(18px + .2vw);
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+.align-left {
+    text-align: left;
+}
+.align-right{
+    text-align: right;
+    
+}
+.white {
+    color: white;
+}
+.grey {
+    color: rgb(122, 122, 122);
+}
+.padding {
+    padding: 5% 3% 5% 3%;
+}
+.paddingLight {
+    padding: 2% 1% 2% 1%;
+    text-align: center;
+    background: rgb(236, 232, 232) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    float: left;
+    width: 100px;
+    font-family: 'Raleway';
+    margin: 3% 2% 3% 5%;
+    cursor: pointer;
+}
+
+.paddingLight:hover {
+    box-shadow: 5px 6px 6px #b9b9b955; 
+}
+
+.cardTextTopMargin {
+    margin-top: 5%;
+}
+.cardTextPadding {
+    padding: 2% 4% 2% 4%;
+}
+.topMargin {
+    margin-top: 10%;
+}
+.whiteBg{
+    background-color: white;
+}
+.space{
+    margin: 0 1%;
+}
+.spaceMed{
+    margin: 0 10%;
+}
+hr {
+    border:none;
+    width: 100%;
+    height: 70px;
+    margin-top: 0;
+    border-bottom: 0.1px solid #1f120933;
+    box-shadow: 0 10px 20px -20px #33333399;
+    margin: -50px auto 10px;
+    margin-bottom: 30px;; 
+  }
+/* ===============================*/
+/*                                                               */
+/*                          BUTTONS                        */
+/*                                                              */
+/*===============================*/
+ .button{
+    width:  calc(100px + 1.8vw); 
+    height: calc(10px + 1.8vh); 
+    font-size: calc(16px + .2vw); 
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    padding:  7% 0;
+ }
+ .red {
+    color: rgb(233, 70, 70);
+    border: 1px solid red;
+ }
+ .green{
+    color: rgb(58, 194, 162);
+    border: 1px solid rgb(58, 194, 162);
+ }
+ .black{
+    color: #121212;
+    border: 1px solid #121212;
+ }
+ 
+ button a {
+    cursor: pointer;
+ }
+#updateProfileBtn {
+    cursor: pointer;
+ }
+.btnPad {
+    margin: 0 5%;
+}
+/* ===============================*/
+/*                                                               */
+/*              TOP FOUR - BANNER                   */
+/*                                                              */
+/*===============================*/
+#one, #two, #three, #four{
+    height: 100px;
+}
+/* ===============================*/
+/*                                                               */
+/*                  PAGE WRAPPERS                      */
+/*                                                              */
+/*===============================*/
+/* landing page */
+.wrapper{ /*holds all elements right of toolbar*/
+    background: #ffffff;
+    width: calc(100% - (50px + 1.4vw)); /* 100% - toolbar width*/
+    margin-left: calc(50px + 1.4vw); /*width of tool bar*/
+    text-align: center;
+    background-attachment: fixed; /*creates paralax effect */ 
+    }
+/*reg, login page */
+.bgImageWrapper{ /*holds all elements right of toolbar*/
+    background: #222222;
+    width: calc(100% - (50px + 1.4vw)); /* 100% - toolbar width*/
+    margin-left: calc(50px + 1.4vw); /*width of tool bar*/
+    text-align: center;
+    background-attachment: fixed; /*creates paralax effect */ 
+    min-height: 100vh; 
+    background-repeat: no-repeat; 
+    background-position: center;  
+    }
+
+/* form bg images */
+.loginImage{
+    background: linear-gradient(rgb(41, 41, 41, .2), rgb(15, 15, 15, .2)),  url(../../login.jpg); 
+    background-size: cover; 
+}
+.regImage{
+    background: linear-gradient(rgb(41, 41, 41, .2), rgb(15, 15, 15, .2)),  url(../../register.jpg); 
+    background-size: cover; 
+}
+.forgotImage{
+    background: linear-gradient(rgb(41, 41, 41, .2), rgb(15, 15, 15, .2)),  url(../../forgot_password.jpg); 
+    background-size: cover; 
+}
+.resetImage{
+    background: linear-gradient(rgb(41, 41, 41, .2), rgb(15, 15, 15, .2)),  url(../../reset_password.jpg); 
+    background-size: cover; 
+}
+
+/* ===============================*/
+/*                                                               */
+/*                  RESPONSIVE BLOCKS                */
+/*                                                              */
+/*===============================*/
+.container{/*holds all cards*/
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow: auto; 
+    }
+.card{ /*holds all elements and images*/
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    color: black;   
+    margin: 1% .5% 1% .5%;
+    
+}
+.element { /*element wrap- applies flex to image and image details */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card .element img {
+    height: 260px;
+    width: 400px;
+    object-fit: cover; 
+}
+
+/*============= dashboard =================*/
+#dashboard {
+    display: flex;
+}
+.dashboardLeft{ /*holds all elements right of toolbar - dashboard left*/
+    width: 62%;
+    min-height: 100vh;
+    text-align: center;
+    overflow: auto;
+    background: rgb(245, 244, 244);
+
+    }
+.dashboardLeft .container .card .element{
+    background: white;   
+}
+.dashboardLeft .container .card{
+    margin: 5% 1% 1% 1%;  
+}
+.deleteButton {
+    display: block;
+    background: #121212;
+    color: white;
+    border: 1px solid black;
+    padding: 10%;
+    width: 100px;
+    font-family: 'Raleway';
+    margin: 3% 3%
+}
+.dashboardRight{ 
+    width: 38%;
+    min-height: 100vh;
+    position: fixed;    
+    margin-left: calc(62% - (50px + 1.4vw));  
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-left: .1px solid #c3c3c3;
+    box-shadow: 5px 30px 25px #b9b9b9;  
+    }
+
+.dashboardRight .container .card .element img{
+    height: 350px;
+    width: 500px;
+    object-fit: cover;
+    box-shadow: 5px 20px 20px #797979;   
+    
+}
+.dashboardRight .container .card .element{
+    text-align: left;
+    font-size: 20px;
+    padding: 2%;
+}
+#newStory {
+    border: dotted;
+    color: rgb(194, 194, 194);
+} 
+#newStory :hover{
+    background: rgb(235, 235, 235);
+}  
+ .newStory {
+    height: 260px;
+    width: 400px;
+    object-fit: cover; 
+}
+#buttonHold {
+   background: white;
+   width: 100%;
+}
+.myStoryBtn {
+    background: #121212;
+    color: white;
+    border: 1px solid black;
+    float: left;
+    width: 100px;
+    font-family: 'Raleway';
+    margin: 3% 2% 3% 5%;
+}
+#buttonHold {
+    /* display: none; */
+}
+.adminButton {
+    display: block;
+    background: #121212;
+    color: white;
+    border: 1px solid black;
+    padding: 10%;
+    width: 100px;
+    font-family: 'Raleway';
+    margin: 3% 3%
+}
+.adminButton:hover {    
+    background:rgb(170, 170, 170);
+    border: 1px solid rgb(170, 170, 170);
+}
+
+#profileUserNameHolder {
+    width: 100%;
+}
+
+#avatarImage{
+    /* float: left; */
+    width: 100%;
+    opacity: 1;
+}
+
+#avatarImage:hover{
+    opacity: 0.7;
+}
+/* ===============================*/
+/*                                                               */
+/*                          FORM                             */
+/*                                                              */
+/*===============================*/
+#formCard{
+margin-top: calc(10%);  
+margin-left: 40%;
+}
+#formElement{ 
+    width:  calc(320px + 5vw); 
+    height: calc(520px + 5vh);
+    background: rgba(253, 253, 253, 0.5);   
+    padding: 2rem 3rem 2rem 3rem;
+ }  
+ .formInput { 
+    width: 95%; 
+    height: 50px; 
+    display: block; 
+    padding-left: 5%;
+    background: #e5f2ff; 
+    overflow: hidden; 
+  }  
+  .submit {
+    width: 100%;
+    color: white;
+    background: #121212; 
+  }
+
+ #regButton {
+    position: absolute;
+    margin-top: 90vh;
+    margin-left: -40%; 
+
+  }
+
+  @media (max-width: 1024px) {
+    #formCard{
+        margin-left: 0%;
+    }
+    #regButton {
+        display: none;
+    }
+ }
+
+ @media (max-width: 640px) {
+    #formCard{
+        margin: 0;
+        width: 100%;/* 100% - toolbar width*/
+    }
+     #formElement {
+        margin: 0;
+        padding: 0 5% 15% 5%;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(253, 253, 253);
+    }
+    .formInput { 
+        width: 72%; 
+    }  
+    .submit{
+        width: 77%;
+    }
+
+ }
+/* ===============================*/
+/*                                                               */
+/*                          modal                           */
+/*                                                              */
+/*===============================*/
+/* Adapted from w3 schools modal */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    padding-top: 3%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */ 
+    background-color: rgb(209, 209, 209); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.85); /* Black w/ opacity */
+  }
+  .modal-content {  /* modal content */
+    background-color: #fefefe;
+    margin: auto;
+    padding: 1%;
+    border: 1px solid #888;
+    width: 50%;
+  }
+  .close {  /* close button */
+    color: #aaaaaa;
+    
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 15%;
+    position: absolute;
+  }
+  .close:hover,   /* onhover close effects */  
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #myModal form {
+      background: rgba(255, 255, 255, 0.7);  
+  }
+  #storyModal form {
+    background: rgba(255, 255, 255, 0.7);  
+}
+#updateProfile {
+    display: none;
+}
+#deleteProfile, #deleteStory #deleteUser{
+    display: none;
+}
+#deleteMyStoryCard {
+    display: none;
+}
+#deleteMyStory {
+    width:  calc(320px + 5vw); 
+    height: calc(520px + 5vh);
+    background: rgba(253, 253, 253, 0.5);   
+    padding: 2rem 3rem 2rem 3rem; 
+}
+#editStory{
+  display: none;
+}
+#deleteUser .formInput{
+    background: rgb(255, 85, 85);
+}
+#deleteStory  .formInput{
+    background: rgb(255, 85, 85);
+}
+  #deleteProfile .formInput{
+    background: rgb(255, 85, 85);
+}
+#deleteMyStoryCard .formInput{
+    background: rgb(255, 85, 85);
+}
+input:hover[type="submit"]{
+    opacity: 0.7;
+}
+/*================================*/
+/*                                                                */
+/*                    STORY VIEWER                        */
+/*                                                                */
+/*================================*/
+#editor {
+    display: flex;
+    /* overflow: hidden; */
+    height: 100vh;
+}
+
+#storyViewer{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.storyViewer{
+    width: 60.5%;
+    text-align: center;
+    overflow: auto;
+    background: rgb(245, 244, 244);
+}
+.storyViewer .card {
+    justify-content: center;
+    min-height: 100Vh;
+    width: 900px;
+    width:  calc(600px + 8vw);  
+}
+.storyTitle{
+    font-size: calc(25px + .3vw);
+    color: rgb(163, 163, 163);
+    text-align: left;
+    cursor: pointer;
+    padding: 5% 0 1% 0;
+}
+.sceneTitle{
+    font-size: calc(20px + .3vw);
+    color: rgb(121, 121, 121);
+    text-align: left;
+    padding: 1% 0 1% 0;
+}
+.description, .prompt{
+    font-size: calc(18px + .3vw);
+    text-align: left;
+    padding: 1% 0 1% 0;
+}
+.storyViewer img{
+    width:  calc(600px + 8vw); 
+    height:  calc(337px + 8vw);
+    margin: 1% 0 3% 0;
+    box-shadow: 5px 20px 20px #474747;   
+}
+
+.storyViewer #buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;  
+    padding: 1% 0 1% 0;    
+}
+.storyViewerButton {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(15px + .05vw);
+    border: .5px solid black;
+    margin: 2%;
+    box-shadow: 5px 20px 20px #b9b9b9;  
+    padding:  2%;
+    min-width: 150px;
+}
+.storyViewerButton:hover{
+   opacity: 0.5;
+}
+
+
+/*================================*/
+/*                                                                */
+/*                 STORY EDITOR                           */
+/*                                                                */
+/*================================*/
+.storyEditor{ 
+    width: 39.5%;
+    background: rgb(235, 235, 235);
+    border-left: .1px solid #c3c3c3;
+    box-shadow: 5px 30px 25px #b9b9b9; 
+    }
+
+#editorControls {
+    width: 100%;
+    height: 160px;
+    padding-top: 5%;
+    border-bottom-width: 80%;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.336); 
+}
+
+.storyEditor .container{
+    width:  100%;
+    background: rgba(228, 228, 228, 0.5);
+    text-align: left;
+}
+#storyEditor p{
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(18px + .2vw);
+    margin: 1% 0;
+}
+#storyEditor input{
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    background: white;
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 4%;
+}
+
+.storyEditorInput{
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    height: 30px;
+    padding: 1%;
+    margin-bottom: 4%;
+    margin-top: 5px;
+}
+
+#storyEditor label {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(14px + .2vw);
+    margin: 0 0 1% 0;
+}
+#storyEditor button {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+}
+#storyEditor textarea {
+    font-family: 'Raleway', sans-serif;
+    text-align: left;
+    background: white;
+    width: 98%;
+    height: 8%;
+    padding: 2%;
+    margin-bottom: 4%;
+}
+#choicesContainer {
+    display: inline-block;
+    margin-top: 0;
+    padding-top: 0;
+}
+#storyEditor select {
+ background: white;
+} 
+
+/* ===============================*/
+/*                                                               */
+/*                       TAB STYLES                        */
+/*                                                              */
+/*===============================*/
+#tabButtons {
+    width: 100%;
+    height: 60px;
+    padding: 0.5rem 0rem 0rem 0.4rem;
+}
+
+.tabButton {
+    float: left;
+    width: 24%;
+    height: 60px;
+    text-align: center;
+    border-top: 1px solid #33333333;
+    border-left: 1px solid #33333333;
+    border-right: 1px solid #33333333;
+    border-top-left-radius: 8px ;
+    border-top-right-radius: 0px ;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.tabButton p {
+    margin-top: 20px;
+}
+
+#tabHolder {
+    width: 100%;
+    height: 60%;
+}
+
+#tabs {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10% 5% 10% 5%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#storyStoryEditor {
+    position: absolute;
+}
+#storyChapterEditor {
+    position: absolute;
+}
+#storySceneEditor {
+   position: absolute;
+   width: 80%;
+}
+#storyMediaEditor {
+    position: absolute;
+}
+
+/* ===============================*/
+/*                                                               */
+/*                       ADMIN STORIES                  */
+/*                                                              */
+/*===============================*/
+#search {
+    width: 100%;
+} 
+.search {
+    background: white;
+    border: 1px solid black;
+    padding: 1% 5% 1% 2%;
+    width: 200px;
+}
+.searchButton {
+    background: #121212;
+    color: white;
+    border: 1px solid black;
+    padding: 1%;
+    width: 100px;
+    font-family: 'Raleway';
+}
+#deleteStory {
+    display: none;
+}
+.transparentBtn {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    float: left;
+    width: 100px;
+    font-family: 'Raleway';
+    margin: 3% 2% 3% 5%;
+}
+.transparentBtn:hover{
+    box-shadow: 3px 5px 5px #868686;
+}
+/* ===============================*/
+/*                                                               */
+/*                       INDEX SEARCH BAR             */
+/*                                                              */
+/*===============================*/
+#searchModal form {
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.searchInputHolder {
+    width: 50%;
+    height: 150px;
+    margin: auto;
+    border-bottom-length: 50px;
+    border-bottom-color: lightgreen;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+.searchInputBox{
+    width: 80%;
+    height: 100px;
+    font-size: 60pt;
+    font-weight: bolder;
+    color: white;
+    font-family: 'Raleway';
+    margin-top: 50px;
+    outline: none;
+    overflow: hidden;
+    float: left;
+
+}
+.searchInputButton{
+    font-size: 30pt;
+    float: right;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 80px;
+    color: lightgreen;
+    font-family: 'Raleway';
+}
+
+/*================================*/
+/*                                                                */
+/*            STORY MODAL LANDING PAGE          */
+/*                                                                */
+/*================================*/
+  .storyContainer {
+         /*css reset */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: auto !important;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        text-decoration: none;
+        outline: none; 
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*fallback fonts*/
+        font-family: 'Old Standard TT', serif;
+        color: rgb(20, 20, 20);
+        position: fixed;
+    }
+
+    .storyViewerModal {
+        margin: auto;
+        width:  calc(360px + 35vw); 
+        text-align: center;
+        overflow: auto;
+        min-height: 90vh;
+    }
+
+    #storyfocus {
+        overflow-y: auto;        
+    }
+
+    .storyViewerInModal {
+        width: 80%;
+        overflow-y: auto;
+    }
+    .storyViewerInModal  img {
+        width: 100%;
+        margin-bottom: 2%;
+         height:  calc(300px + 12vw);
+    }
+  
+    .storyViewerInModal button {
+        font-family: 'Lato', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Raleway', sans-serif;
+        font-weight: bolder;
+        font-size: calc(18px + .05vw);
+        border: .5px solid black;
+        margin: 2%;
+        padding:  2%;
+        border: 3px solid black;
+        background:  #d1d1d1;
+        box-shadow: 3px 5px 5px #6d6d6d; 
+    }
+
+    .storyViewerInModal .storyTitle{
+        /* font-family: 'Old Standard TT', serif; */
+        font-size: calc(30px + .5vw);
+        color: rgb(209, 209, 209);
+        text-align: left;
+        cursor: pointer;
+        padding: 5% 0 1% 0;
+    }
+    .storyViewerInModal  p{
+    color: rgb(163, 163, 163);
+    font-family: 'Raleway';
+    }
+/*================================*/
+/*                                                                */
+/*       CLIENT SIDE FORM PROTECTION             */
+/*                                                                */
+/*================================*/
+    /*https://girliemac.com/blog/2012/11/21/html5-form-validation/  */
+    /* When the pattern is matched */
+input[type=text]:valid {
+    color: rgb(143, 140, 140);
+}
+/* Unmatched */
+input[type=text]:invalid {
+    color: rgb(255, 94, 45);
+}
+input[type=email]:valid [type=password]:invalid{
+    color: rgb(143, 140, 140);
+}
+input[type=email]:invalid [type=password]:invalid{
+    color: rgb(255, 94, 45);
+}
+input[type=password]:invalid{
+    color: rgb(143, 140, 140);
+}
+input[type=password]:invalid{
+    color: rgb(255, 94, 45);
+}
+/*================================*/
+/*                                                                */
+/*              BORDER - FOR TESTING                 */
+/*                                                                */
+/*================================*/
+.borderBlue{
+    border: 2px solid blue;
+}
+.borderRed{
+    border: 2px solid rgb(255, 85, 85);
+}
+.borderGreen{
+    border: 2px solid rgb(15, 255, 135);
+}
+
+#messagePopup {
+    z-index: 100;
+    position: fixed;
+    bottom: 5px;
+    left: 10px;
+    width: 0px;
+    height: 40px;
+    border-radius: 25px;
+    background: #444444;
+    overflow: hidden;
+}
+#message{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.choiceBox {
+    border: 1px dotted rgba(0, 0, 0, 0.089);
+    width : 100%;
+    height: 400px;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.deleteChoiceButton {
+    float: right;
+    padding: 2% 1% 2% 1%;
+    text-align: center;
+    background: rgba(231, 154, 154, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 120px;
+    font-family: 'Raleway';
+    cursor: pointer;
+}
+
+.addChoiceButton {
+    float: left;
+    padding: 2% 1% 2% 1%;
+    text-align: center;
+    background: rgba(154, 231, 173, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 120px;
+    font-family: 'Raleway';
+    cursor: pointer;
+    margin-bottom: 200px;
+}
+
+.targetSelector {
+    float: right;
+    width: 65%;
+}
+
+.targetImage {
+    float: left;
+    width: 35%;
+    height: 140;
+}
+
+.targetChapterDropdown {
+    float: right;
+    width: 60%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.targetSceneDropdown {
+    float: right;
+    width: 60%;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.choiceLabel {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+}
+
+.storyEditorChoiceInput {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    background: rgb(255, 255, 255);
+    width: 90%;
+    height: 60px;
+    padding: 1%;
+    margin-bottom: 4%;
+    margin-top: 5px;
+}
+
+.chapterHolder {
+    border: 1px solid rgba(0, 0, 0, 0.555);
+    width : 90%;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.sceneHolder {
+    border: 1px dotted rgba(0, 0, 0, 0.089);
+    width : 100%;
+    height: 110px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.chapterHolderTitle {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 60px;
+    font-size: 22pt;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.chapterHolderSceneCount {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.chapterHolderSceneImage {
+    float: left;
+    width: 20%;
+    height: 100px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.chapterHolderSceneTitle {
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.storyChapterDropdown {
+    float: right;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.storySceneDropdown {
+    float: right;
+    width: 100%;
+    height: 40px;    
+    margin-bottom: 10px;
+}
+
+.sceneLabelDropdown {
+    border: 1px dotted rgba(0, 0, 0, 0.089);
+    width : 200px;
+    height: 100px;
+    float: left;
+    margin-left: 30px;
+}
+
+.chapterLabelDropdown {
+    border: 1px dotted rgba(0, 0, 0, 0.089);
+    width : 200px;
+    height: 100px;
+    float: left;
+    margin-left: 30px;
+}
+
+.chapterSceneControlsLabel {
+
+    float: left;
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 60px;
+    font-size: 16pt;
+    margin-top: 15px;
+}
+
+.addChapterScene {    
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: rgba(154, 231, 173, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-family: 'Raleway';
+    font-size: 28pt;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.removeChapterScene {    
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
+    background: rgba(231, 154, 154, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-family: 'Raleway';
+    font-size: 28pt;
+    cursor: pointer;
+}
+
+.uploadButton {
+    float: left;
+    text-align: center;
+    background: rgba(154, 231, 173, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    font-family: 'Raleway';
+    font-size: 18pt;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.uploadHolder {
+    float: left;
+    text-align: center;
+    background: rgba(154, 231, 173, 0.342) !important;
+    color: black;
+    border: 1px solid rgba(44, 37, 37, 0.238);
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    font-family: 'Raleway';
+    font-size: 18pt;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.userMediaGallery {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -8px; /* Adjustment for the gutter */
+    width: 90%;
+}
+
+.userMediaGallery-Brick {
+    flex: auto;
+    height: 140px;
+    min-width: 30px;
+    max-width: 220px;
+    margin: 0 8px 8px 0; /* Some gutter */    
+}
+
+.flashMessage {
+    font-family: 'Lato', sans-serif;
+    font-size: calc(14px + .2vw);
+    background: none;
+    color: rgb(189, 61, 45);
+}
+.tickBox {
+    background: none;
+    margin: 3%;
+    font-size: calc(20px + .2vw);
+}

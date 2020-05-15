@@ -1,0 +1,29 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                           FORGOT PASSWORD PAGE                                                                           //
+//                                                                                                                                                                          //
+//====================================================================================-->
+<% include ../partials/header.ejs %>
+
+<div class="bgImageWrapper forgotImage">
+
+    <div class="container">
+        
+        <div id="regButton" class="element">
+            <a   href="/users/register" class="button green align-left">Register</a>
+        </div>
+
+        <div id="formCard" class="card  align-left" > 
+            <form  id="formElement" class="element" action="/forgot" method="POST">
+                <p><% include ../partials/messages.ejs %></p>
+                <p class="title1  align-left">Forgot Password?</p>  
+                <p class="smallText">New User? <a class="smallText" href="/users/register"> Register</a></p>    
+                <input type="email" id="email" name="email" class="formInput" placeholder="Enter Email" required autofocus/>
+                <input type="submit" class="formInput submit medText" value="Submit">
+            </form> 
+        </div> 
+        
+    </div> <!--------- end container ------------------------------------------------------------>
+</div> <!----------- end wrapper  ---------------------------------------------------------->
+
+<% include ../partials/footer.ejs %>

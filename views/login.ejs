@@ -1,0 +1,36 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                             LOGIN PAGE                                                                                            //
+//                                                                                                                                                                          //
+//====================================================================================-->
+<% include ../partials/header.ejs %>
+
+<div class="bgImageWrapper loginImage">
+
+    <div class="container">
+        
+        <div id="regButton" class="element">
+            <a   href="/users/register" class="button red align-left">Register</a>
+        </div>
+
+        <div id="formCard" class="card  align-left" > 
+            <form  id="formElement" class="element" action="/users/login" method="POST">
+                <p><% include ../partials/messages.ejs %></p>
+                <p class="title1  align-left">Login</p>  
+                <p class="smallText">New User? <a class="smallText" href="/users/register"> Register</a></p>    
+                <input type="email" id="email" name="email" class="formInput" placeholder="Enter Email" required/>
+                <input type="password" id="password" name="password" class="formInput" suggested="current-password" placeholder="Enter Password"  required title="Any Uppercase/Lowercase letters & numbers, between 6-10 characters - no special characters" pattern="[A-Za-z\d]{6,10}"/>
+                <input type="submit" class="formInput submit medText" value="Submit">
+                <p  class="smallText">Remember Me: <input type="checkbox"  name="remember" value="yes"> </p>
+                
+                <a class="smallText" href="/forgot">Forgot your password? </a>
+
+                
+            </form> 
+        </div> 
+        
+    </div> <!--------- end container ------------------------------------------------------------>
+</div> <!----------- end wrapper  ---------------------------------------------------------->
+
+<% include ../partials/footer.ejs %>
+

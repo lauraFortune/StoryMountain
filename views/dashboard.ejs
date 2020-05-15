@@ -1,0 +1,215 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                         MEMBER'S PRIVATE DASHBOARD PAGE                                                            //
+//                                                                                                                                                                          //
+//====================================================================================-->
+<% include ../partials/header.ejs %>
+    <div id="dashboard" class="wrapper">
+
+        <div class="dashboardLeft"> <!--start dashboardLeft -->
+            <div class="container"> <!-- start main gallery -->
+                <p class="title2 element padding grey">My Stories</p> 
+            </div> 
+         
+            <div class="container"><!-- start user's gallery - container -->
+                <div id="newStory" class="card"><!-- start create story card -->
+                        <div  class="element">
+                            <form accept-charset="UTF-8"  action="/users/createnewstory" method="post" >
+                                <button class="newStory" type="submit">
+                                    <i class="fas fa-plus-circle fa-4x " style="color: #dddcdc; padding: 10%;"></i>
+                                    <p class="title3 padding grey">Create A Story</p>
+                                </button>
+                            </form>
+                        </div>
+                    </div>  <!-- end card -->
+                <% stories.forEach(function(el) { %><!-- loop through story json and put to screen... -->
+                     <div class="card" id="item<%= el.id %>">  <!-- onclick="storyOptions('<%= el.id %>')" -->
+                        <div class="element">
+                            <img src="/<%=el.chapters[0].scenes[0].image %>" />
+                          
+                            <div id="buttonHold<%= el.id %>">
+                                
+                                <p class="smallText"><%= el.title %></p>
+                                
+                                <% if (el.publish == false) { %>
+                                    <form accept-charset="UTF-8"  action="/users/publish/<%= el.id %>" method="post" >
+                                        <input type="submit" class="myStoryBtn" value="Publish"></p> 
+                                    </form>
+                                <% } %>
+                                <% if (el.publish == true) { %>
+                                    <form accept-charset="UTF-8"  action="/users/unpublish/<%= el.id %>" method="post" >
+                                        <input type="submit" class="myStoryBtn" value="Unpublish"></p> 
+                                    </form>
+                                <% } %>
+                                    
+
+                                <p onclick="deleleStoryBtn('<%= el.id %>')" class="myStoryBtn" >Delete</p>
+                                  
+                                    <a href= "/users/stories/<%= el.id %>"><p class="myStoryBtn">Edit</p> </a>
+                                </div>
+                            <script>
+                            $("#buttonHold<%= el.id %>").hide(); 
+                            $(document).ready(function() {
+                            $("#item<%= el.id %>").click( function(){
+                                console.log("item<%= el.id %>");
+                                $("#buttonHold<%= el.id %>").slideToggle(500);
+                               
+                            });
+                              });
+                            </script>
+                         
+
+
+                        </div>
+                    </div>  <!-- end card -->
+                <% }); %>
+            </div><!-- end user's gallery - container --> 
+        </div> <!-- end dashboardLeft -->
+
+        <div class="dashboardRight "><!--start dashboardRight -->
+            <div class="container ">  
+         <hr>
+                <p class="card medTextRale" style= "margin: 5% 0 3% 0;">
+                        <% if (user.admin == true) { %>
+                            ADMIN MODE
+                </p><span class="space"></span>
+                <a href="/admin/users" class="padding"><p class="adminButton">Users</p></a>
+                <a href="/admin/stories" class="padding"><p class="adminButton">Stories</p></a>
+      
+  
+            <hr>
+                    
+            <% } %> 
+            
+                <p class="card medText" style=" padding-top: 5%">Welcome Back <%= user.name %> :)</p> 
+                    <a href="/users/logout" style= "margin: 3% 3%">
+                        <i class="fas fa-sign-out-alt fa-3x" style="color: #dddcdc;"></i>
+                    </a><span class="spaceMed"></span>   
+                
+                <div class="card">
+                    <div class="element">
+
+                        <div id="updateProfileBtn">
+                            <img src="/<%=user.image %>" id="avatarImage" />
+                        </div>
+
+                        <div class="element topMargin">
+                            <p class="smallText  grey">Username: <span class="space"></span><%= user.name %></p>
+                            <p class="smallText grey">Member Since: <span class="space"></span><%= user.createdAt %></p>
+                            <p class="smallText grey">Email: <span class="space"></span><%= user.email %></p>
+                            <p class="smallText grey">Stories Created: <span class="space"></span><%= stories.length %></p>
+                            <p class="smallText grey">About: <span class="space"></span><%= user.about %></p><br>
+                            <div class="container">
+                                <p id="deleteProfileBtn">
+                                    <i class="fas fa-user-times fa-2x" style="color: #dddcdc; margin-top: 5%"></i>
+                                </p>
+                            </div>
+                        </div><!--end element-->
+
+                    </div><!-- end  element -->
+                </div><!-- end card -->
+
+        </div><!-- end dashboardRight -->
+       
+    <div id="myModal" class="modal"> 
+        <span class="close">&times;</span> 
+            <div class="container">
+                <!-- ================================= start updateProfile ====================================-->
+                <div  id ="updateProfile">
+                    
+                    <div class="card  align-left" > 
+                        <form   id="formElement" class="element" accept-charset="UTF-8"  ref="uploadForm" action="/editProfile/<%= user.id %>" method="post" enctype="multipart/form-data">
+                        
+                            <p><% include ../partials/messages.ejs %></p>
+                            <p class="title2  align-left">Update Your Profile</p>
+                            <label class="smallText" >Profile Image:</label>
+                            <input class="formInput" type="file" name="sampleFile" value="<%= user.image %>" title="Jpg's or Png's only" required pattern=".*\.(jpe?g|png)$"  />
+                            <label class="smallText" >About me:</label>
+                            <input class="formInput"  type="text" name="about" placeholder="About me...." value="<%= user.about %>"  title="Letters, numbers, #, !, ' and spaces(at least one letter or number)" required pattern="[A-Za-z0-9 #_]*[A-Za-z0-9][A-Za-z0-9 #!'_]*$" autofocus/>
+                            <input type="submit" class="formInput submit medText" value="Edit">
+
+                        </form> 
+                    </div> 
+                </div>
+                <!-- ================================= end updateProfile====================================-->
+                <!-- =================================start deleteProfile====================================-->
+                <div  id ="deleteProfile">
+                    <div class="card  align-left" > 
+                            <form id="formElement" class="element" accept-charset="UTF-8"  action="/users/deleteuser/<%= user.id %>" method="get" >
+                                <p class="title2  align-left">Delete Account !!</p> 
+                                <p><% include ../partials/messages.ejs %></p>
+                                <p class="smallText">Are you sure you want to close your account? </p> 
+                                <p class="smallText">All of your Stories will be deleted also. </p>
+                                <p class="smallText">This cannot be undone </p>  
+                                <input type="submit" class="formInput submit medText" value="Delete">
+                        </form> 
+                    </div>     
+                </div>
+                <!-- ================================= end deleteProfile====================================--> 
+                <!-- ================================= start deleteStory ====================================-->
+                <div id="deleteMyStoryCard" >   
+                    <div class="card  align-left" >
+                        <form id="deleteMyStory" class="element" accept-charset="UTF-8"  method="get" >
+                            <p class="title2  align-left">Delete Story ?</p> 
+                            <p><% include ../partials/messages.ejs %></p>
+                            <p class="smallText">Are you sure you want to delete this story? </p> 
+                            <p class="smallText">This cannot be undone </p> 
+                            <input type="submit" class="formInput submit medText" value="Delete">
+                        </form> 
+                    </div>
+                </div>   
+                <!-- ================================= end  delete story ====================================-->
+        </div><!-- end modal container-->
+    </div> <!--end modal -->
+
+    <script>
+        var stories = <%- storiesJson %> //makes stories json available to script file
+        console.log("This should say 3: " + stories.length);
+
+//===========================================================//
+//                                                                                                                     //
+//                MODAL -UPDATE PROFILE, DELETE PROFILE AND DELETE  STORY             //                                                                                                             
+//                                                                                                                    //
+//==========================================================//
+        var modal = document.getElementById("myModal");
+        var updateProfileBtn = document.getElementById("updateProfileBtn");
+        var updateProfile = document.getElementById("updateProfile");
+        var deleteProfileBtn = document.getElementById("deleteProfileBtn");
+        var deleteProfile = document.getElementById("deleteProfile");
+        var close = document.getElementsByClassName("close")[0]; //gets first element that has classname close
+        var deleteMyStory = document.getElementById("deleteMyStoryCard");
+        var deleteMyStoryAction = document.getElementById("deleteMyStory");
+        var editStory = document.getElementById("editStory");
+    
+    
+        updateProfileBtn.onclick = function() {
+        modal.style.display = "block";
+        updateProfile.style.display ="block"
+        }
+        deleteProfileBtn.onclick = function() {
+            modal.style.display ="block";
+            deleteProfile.style.display ="block";
+        }
+        function deleleStoryBtn(id) {
+            modal.style.display = "block";
+            deleteMyStory.style.display ="block";
+            deleteMyStoryAction.setAttribute("action", "/users/deletestory/" + id);
+        }
+        close.onclick = function() { // need to ensure all elements are hidden each time they are closed
+        modal.style.display = "none";
+        updateProfile.style.display ="none";
+        deleteProfile.style.display ="none";
+        deleteMyStory.style.display ="none";
+        }
+        window.onclick = function(event) { //if click anywhere modal will close
+        if (event.target == modal) {
+            modal.style.display = "none";
+            updateProfile.style.display ="none";
+            deleteProfile.style.display ="none";
+            deleteMyStory.style.display ="none";
+        }
+        }
+    </script>
+</div> <!-- end wrapper -->
+<% include ../partials/footer.ejs %>
+

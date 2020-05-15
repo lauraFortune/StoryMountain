@@ -1,0 +1,179 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                             LANDING PAGE ( MAIN GALLERY )                                                               //
+//                                                                                                                                                                          //
+//====================================================================================-->
+
+<% include ../partials/header.ejs %>
+
+    <div class="wrapper"> <!--start page wrapper -->
+        
+        <!-- banner highlighting the last four stories created - only if 4 or more -->
+        <% if (stories.length >= 4) { %>
+            <div id="topFourContainer" class="container"> <!--start latest stories - container -->
+                <div class="card" onclick="storyFocus( '<%=topFour[topFour.length-1]._id %>')" >
+                        <div  class="element" >
+                                <img id="one" src="/<%=topFour[topFour.length-1].chapters[0].scenes[0].image %>" class="card-img"  /> <!-- latest stories - 2  -->
+                                <p style="text-align: left;font-size: 20px"><%= topFour[topFour.length-1].title %> by <%= topFour[topFour.length-1].user.name %></p>
+                        </div>
+                    </div>
+                <div class="card" onclick="storyFocus( '<%= topFour[topFour.length-2]._id %>')"  >
+                    <div  class="element" >
+                            <img  id="two" src="/<%=topFour[topFour.length-2].chapters[0].scenes[0].image %>" class="card-img"  /> <!-- latest stories - 2  -->
+                            <p style="text-align: left;font-size: 20px"><%= topFour[topFour.length-2].title %> by <%= topFour[topFour.length-2].user.name %></p>
+                    </div>
+                </div>
+                <div class="card " onclick="storyFocus( '<%= topFour[topFour.length-3]._id %>')"  >
+                    <div class="element" >
+                            <img  id="three" src="/<%=topFour[topFour.length-3].chapters[0].scenes[0].image %>" class="card-img"  /> 
+                            <p style="text-align: left;font-size: 20px"><%= topFour[topFour.length-3].title %> by <%= topFour[topFour.length-3].user.name %></p>
+                    </div>
+                </div>
+                <div class="card " onclick="storyFocus( '<%= topFour[topFour.length-4]._id %>')">
+                    <div  class="element" >
+                        <img  id="four" src="/<%=topFour[topFour.length-4].chapters[0].scenes[0].image %>" class="card-img"  /> 
+                        <p style="text-align: left;font-size: 20px"><%= topFour[topFour.length-4].title %> by <%= topFour[topFour.length-4].user.name %></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        
+        <!-- search -->
+        <div class="container" id="searchBtn"> 
+            <p class="title1 element">search stories</p>
+            <i class="fa fa-search" aria-hidden="true" style="font-size: 60px; color: #979797; opacity: .2; margin-left: 30px; "; ></i> <!-- font awesome search icon -->
+        </div>
+    
+        <!-- main gallery -->
+        <div class="container">
+            <% stories.forEach(function(el) { %> 
+                <div class="card" onclick="storyFocus( '<%=el._id %>')" >
+                    <div class="element" >
+                        <img src="/<%=el.chapters[0].scenes[0].image %>" class="far fa-heart "   />
+                        <p   class="smallText" style = "text-align: left;"><%= el.title%> by <%= el.user.name %></p>
+                    </div>
+                </div>
+            <% }); %>
+        </div> 
+
+    </div> <!-- end page wrapper  -->
+    
+    <!-- hidden modals -->
+    <div id="myModal" class="modal"> 
+        <span class="close">&times;</span> 
+        
+        <!--===========================  STORY MODAL - VIEW AND PLAY THROUGH A STORY HERE  ===============================================-->
+        <div id="editor"> 
+            <div class="storyViewerModal">
+                    <div id="storyFocus" class="container">
+                            <div id ="storyViewer" class="storyViewerInModal"></div>
+                    </div>   
+                </div>
+                <div class="padding"></div><!-- hack - makes modal scrollable -->
+        </div>
+        
+        <!--================================  SEARCH BAR MODAL  ===============================================-->
+        <div  id="searchModal" class="">
+            <form class="searchInputForm" method = "post" action="/searchStories"><!--search stories-->
+                <div class="searchInputHolder">
+                    <input class="searchInputBox" type="text" name="search" placeholder="Search by Title...." style="background: transparent;">
+                    <input class="searchInputButton" type="submit" value="Search">
+                </div>
+            </form>
+        </div>
+        <!--=======================================================================================================-->
+    </div> <!--end modals -->
+
+
+
+    <script src="../../story.js"></script>
+    <script>
+
+        var stories = <%- storiesJson %>
+        console.log("amount of stories: " + stories.length);
+
+        var story = null;
+
+        //-------------------------------------------------------------------------------------------------------//
+        //                      MODAL - same modal for story, seach bar                                                         //                                                                                        
+        //------------------------------------------------------------------------------------------------------//
+
+        var modal = document.getElementById("myModal");
+        var close = document.getElementsByClassName("close")[0]; //gets first element that has classname close
+        var storyModal = document.getElementById("editor");
+        var searchModal = document.getElementById("searchModal");
+        var searchBtn = document.getElementById("searchBtn");
+        var wrapper = document.getElementsByClassName("wrapper");
+        
+        storyModal.style.display ="none";
+        searchModal.style.display ="none";
+
+        searchBtn.onclick = function() {
+            storyModal.style.display ="none";
+            modal.style.display = "block";
+            searchModal.style.display ="block";
+            
+        }
+
+        function storyFocus(storyId) { //  1.   open modal and call getStoryById function- gets id when from user clicking story
+            console.log(storyId);
+            modal.style.display = "block";
+
+            getStoryById(storyId); // 2.  calls the xmlhttp request (same id is passed)
+        }
+
+        close.onclick = function() { //close modal
+            modal.style.display = "none";
+            storyModal.style.display ="none";
+            searchModal.style.display ="none";
+
+        }
+        window.onclick = function(event) { //if click anywhere modal will close
+            if (event.target == modal) {
+              modal.style.display = "none";
+              storyModal.style.display ="none";
+              searchModal.style.display ="none";
+            }
+        }
+
+        //-------------------------------------------------------------------------------------------------------//
+        //                  GET STORY BY ID FUNCTION                                                                               //                                                                                        
+        //------------------------------------------------------------------------------------------------------//
+            function getStoryById(id) { // 3.  takes paramater id, sends to /stories route and waits for response ( a story comes back )
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var storyObject = JSON.parse(xmlhttp.response); // requested story object comes back in response
+                        displayStory(storyObject); // 4. calls displayStory function and passes returned storyObject as param
+                    }
+                };
+                xmlhttp.open("POST", "http://localhost:3000/stories"); //opens url 
+                xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); //changes request to take json
+                xmlhttp.send(JSON.stringify( {"id" : id } ) ); // sends id in json as request to stories route
+            }
+        
+        //-------------------------------------------------------------------------------------------------------//
+        //                      DISPLAY STORY                                                                                             //                                                                                        
+        //------------------------------------------------------------------------------------------------------//
+        
+        function updateCurrentChapter_CurrentScene(chapter, scene){
+            sceneBuilder(chapter,scene);   // rebuilds the story viewer (same function that is used by story editor) 
+        }
+        
+        function displayStory(storyObject){ //5. opens modal to display story
+            story = storyObject; //story var is now equal to the storyObject parameter
+            sceneBuilder(0, 0); // 6. runs sceneBuilder function from story editor (the script that plays the story)
+            storyModal.style.display ="block";
+        }
+
+
+
+    </script>
+
+<% include ../partials/footer.ejs %>
+
+
+
+
+

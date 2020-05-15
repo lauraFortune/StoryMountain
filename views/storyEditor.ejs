@@ -1,0 +1,180 @@
+<% include ../partials/header.ejs %>
+<!-- message slide out GETS POPULATED BY showPopupMessage function-->
+<div id="messagePopup"> 
+    <p id="message"></p>
+</div>
+<!-- message slide out-->
+
+<div class="container">
+    <div  id="regButton" class="arrowLeft element">
+        <a href="/users/dashboard" id="backLink"><i class="far fa-arrow-alt-circle-left fa-2x" style="color: #adadad; margin-top: 5%;"></i></a>
+    </div>
+</div>
+
+<div id="editor" class="wrapper">
+
+    <div class="storyViewer"> <!--start dashboardLeft --> 
+        <!--=========================== DISPLAY PANEL ==================================-->
+        <div class="container">
+            <div class="card">
+                <div id ="storyViewer"></div>
+            </div>
+        </div> 
+        <!--=========================== END DISPLAY PANEL ===============================-->
+    </div> <!-- end dashboardLeft -->
+
+    <div class="storyEditor"><!--start dashboardRight -->
+        <!--=========================== EDITOR PANEL ==================================-->  
+        <!-- <div class="container"> -->
+            <div id="tabButtons">
+                <div id="tabButton1" class="tabButton" onclick="openTab(0)">
+                    <p>STORY</p>
+                </div>
+                <div id="tabButton2" class="tabButton" onclick="openTab(1)">
+                    <p>STORYBOARD</p>
+                </div>
+                <div id="tabButton3" class="tabButton" onclick="openTab(2)">
+                    <p>SCENES</p>
+                </div>
+                <div id="tabButton4" class="tabButton" onclick="openTab(3)">
+                    <p>MEDIA</p>
+                </div>
+            </div>
+
+            <div id="editorControls">
+                <a class="btnPad" onclick="saveJson()"><p class="paddingLight">Save Story</p></a>
+                <div id="chapterSceneControls"></div>
+            </div>
+
+            <div id="tabHolder">
+                <div id="tabs">
+                    <div id="storyStoryEditor">
+                        <p>EDIT YOUR STORY</p>
+                        <hr>
+                        <label>Title: <input type="text" id="storyTitleInput" class="storyEditorInput" oninput="updateJson()"></label> <!-- story json needs to be updated oninput -->
+                        <hr>
+                        <label>Synopsis: <input type="text" id="storySynopsisInput" class="storyEditorInput" oninput="updateJson()"></label>
+                        <hr>
+                    </div>
+                    <div id="storyChapterEditor"><!--Need to update this name to storyboard -->
+                    </div>
+                    <div id="storySceneEditor">
+                    </div>
+                    <div id="storyMediaEditor">
+                        <div id="uploadControls">
+                            <input type="file" id="fileHolder" class="uploadHolder" name="file" />
+                            <button onclick="uploadFile()" class="uploadButton" >Upload</button> 
+                        </div>
+                        <br><br>
+                        <div id="userMediaGallery" class="userMediaGallery"><!--user gallery here --></div>
+                    <br><br><br><br>   
+                </div>     
+            </div>    
+        <!-- </div>                         -->
+        <!--=========================== END EDITOR PANEL ==================================-->
+    </div><!-- end dashboardRight -->
+
+    
+</div><!--########### END OVER ALL PAGEWRAPPER ##############-->     
+
+<script>
+var story = <%- processedStoryString %>;
+var user = <%- userString %>;
+var backLInk = document.getElementById("backLink");
+    if(user.admin == true && story.user != user._id) { // 1. if user is admin and story does not belong to admin
+
+    backLInk.href ="/admin/stories"; // 2. send admin user back to admin dash
+} else{ // 3. else send back to user dash(if admin are editing their own story they should be sent back to their own profile)
+    backLInk.href ="/users/dashboard"; 
+}
+
+</script>
+
+<!--<script src="json.js"></script>needs to be loaded up first so other scripts have access to it-->
+<script src="../../story.js"></script>
+<script src="../../editor.js"></script>
+<script>
+
+// array of tabs
+    var tabs = [
+        document.getElementById("storyStoryEditor"),
+        document.getElementById("storyChapterEditor"),
+        document.getElementById("storySceneEditor"),
+        document.getElementById("storyMediaEditor")
+    ];
+//array of tab buttons
+    var tabButtons = [
+        document.getElementById("tabButton1"),
+        document.getElementById("tabButton2"),
+        document.getElementById("tabButton3"),
+        document.getElementById("tabButton4")
+    ];
+
+//sets current tab to 0
+    var currentTab = 0;
+
+    function openTab(tabId) { //loops through all tabs and tab buttons and sets the tab and its button to visible if it equals the tab id. Turns all others invisible.
+        for(var i = 0; i < tabs.length; i++) { 
+            if(i == tabId) {
+                tabs[i].style.visibility = "visible";
+                tabButtons[i].style.backgroundColor = "rgba(228, 228, 228, 0.5)";
+                //tabs[i].style.display = block;
+            } else {
+                tabs[i].style.visibility = "hidden";
+                tabButtons[i].style.backgroundColor = "lightgray";
+                //tabs[i].style.display = none;
+            }
+        }
+
+        var tabsHolder = document.getElementById("tabs");
+        tabsHolder.scrollTop = 0;  //makes sure all tabs are scrolled up to start point when tab changes
+
+    }
+
+    openTab(currentTab);
+
+
+ //gets called onclick - sends a form through an xmlhttp request
+    function uploadFile() {  //gets the file from the file holder input, adds it to a form data var, passes form to upload story route and waits for response
+
+        var fileHolder = document.getElementById("fileHolder");
+        var file = fileHolder.files[0];
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4) {
+
+                console.log("The response is: " + xhr.response);
+
+                var response = xhr.response;
+
+                if(response != null) {
+                    loadUserImages(); //calls function to load all images from upload folder after imageuploads - inside editor.js script
+                }
+            }
+        }
+
+        var formData = new FormData();
+        formData.append('myFile', file);
+        xhr.open('post', 'http://localhost:3000/uploadStoryImage', true);
+        xhr.send(formData);
+
+    }
+
+/*message slide out */
+    function showPopupMessage(message) {
+        $("#message").text(message);
+        $("#messagePopup").animate({width: '400px'},350, function( ) {
+                hidePopupMessage(); //call hide popup function
+            });
+    }
+
+    function hidePopupMessage() {
+        $("#messagePopup").delay(3000).animate({width: '0px'},150); // message shows for 3secs and then hides 
+    }
+
+</script>
+</body>
+</html>
+

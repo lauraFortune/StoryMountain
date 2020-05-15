@@ -1,0 +1,167 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                               ADMIN - STORIES PAGE                                                                           //
+//                                                                                                                                                                          //
+//====================================================================================-->
+<% include ../partials/header.ejs %>
+    <div id="dashboard" class="wrapper">       
+
+        <div class="dashboardLeft"> <!--start dashboardLeft -->
+            <div class="container"> <!-- start main gallery -->
+                <p class="title2 element padding grey">Member's Stories</p> 
+            </div> 
+         
+            <div id="Adminsearch" class="container">
+                <form id="search" method = "post" action="/admin/stories"><!--search stories-->
+                    <div class="container">
+                        <input class="search medTextRale" type="text" name="search" placeholder="Search by Title....">
+                        <input type="submit" class="searchButton" value="Search">
+                    </div>
+                </form>
+            </div>
+            
+        <div class="container"><!-- start user's gallery - container -->
+            <% stories.forEach(function(el) { %> 
+                <div class="card" onclick="updateDisplayPanel(
+                    '<%=el.chapters[0].scenes[0].image %>',
+                    '<%=el.title %>', 
+                    '<%=el.user.name %>', 
+                    '<%=el.createdAt %>', 
+                    '<%=el.publish %>',
+                    '<%=el._id %>'
+                    )"
+                    >
+                        <div class="element align-left">
+                                <img src="/<%=el.chapters[0].scenes[0].image %>" />
+                                <p class="smallText  grey  cardTextPadding cardTextTopMargin">Title:<%=el.title %></p>
+                                <p class="smallText  grey  cardTextPadding">Author:<%= el.user.name %></p>
+                        </div>
+                    </div>  <!-- end card -->
+
+            <% }); %>
+        </div><!-- end user's gallery - container --> 
+    </div> <!-- end dashboardLeft -->      
+
+    <div class="dashboardRight"><!--start dashboardRight -->
+
+        <div class="container "> 
+            
+                <hr>
+                <p class="card medTextRale" style= "margin: 5% 0 3% 0;">
+                    ADMIN MODE
+                </p><span class="space"></span>
+                
+                <a href="/admin/users" class="padding"><p class="adminButton">Members</p></a>
+                <a href="/users/dashboard" class="padding"><p class="adminButton">Admin</p></a>
+                
+                <hr>
+            
+            <div id="storyFocus" class="card">
+                <div class="element">
+                    <img src="/_placeholder.png" id="storyImage" class="card-img" />       
+                    <div class="element topMargin">
+                        <p id ="storyTitle" class="medTextRale  grey">Title: Story Title</p><br>
+                        <p id ="storyAuthor" class="smallText grey">Author: Creator's Name</p><br>
+                        <p id ="published" class="smallText grey">Published: True/False</p><br>
+                        <p id ="creationDate" class="smallText grey">Creation Date: Time Stamp</p><br>
+                    </div>
+                </div><!--end element-->
+            </div><!-- end card -->
+        </div><!-- end container -->
+        <div class="container">
+                <a class="btnPad" id="editStoryLink"><p class="transparentBtn padding">Edit</p></a>
+                <a  class="btnPad"  id="deleteStoryBtn"><p class="transparentBtn padding">Delete</p></a>
+        </div>
+    </div><!-- end dashboardRight -->
+
+
+
+
+    <div id="myModal" class="modal"> <!-- The Modal - put this in partial to be reused throughout application? -->
+        <span class="close">&times;</span>
+        <div class="container">
+            <!-- =================================start deleteStory====================================-->
+            <div  id ="deleteStory">
+                <div class="card  align-left" > 
+                        <form id="formElement" class="element" accept-charset="UTF-8"  method="get">
+                            <p class="title2  align-left">Delete Story</p> 
+                            <p class="smallText">Are you sure you want to delete this story? </p> 
+                            <p class="smallText">This cannot be undone</p> 
+                            <input type="submit" class="formInput submit medText" value="Delete">
+                    </form> 
+                </div>     
+            </div>
+            <!-- ================================= end deleteProfile====================================-->
+        </div>   
+    </div> <!--end modal -->
+
+    <script>
+        var stories = <%- storiesJson %>
+
+         // EDIT  USERS STORIES - MODAL
+        var modal = document.getElementById("myModal");
+        var deleteStoryBtn = document.getElementById("deleteStoryBtn");
+        var deleteStory = document.getElementById("deleteStory");
+        var close = document.getElementsByClassName("close")[0]; //gets first element that has classname close
+
+        deleteStoryBtn.onclick = function() {
+            modal.style.display = "block";
+            deleteStory.style.display ="block"
+        }
+
+        close.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) { //if click anywhere modal will close
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }      
+       
+        // called on click of story - story properties needed to be passed separately to gain access
+        //this function is used to update and set the display panel 
+        function updateDisplayPanel(image, title, name, creationDate, publish, storyID) {
+
+            console.log("Focusing on story id: " + storyID);
+
+            var storyImage = document.getElementById("storyImage");
+            storyImage.setAttribute("src", "/"+ image);
+
+            var storyTitle = document.getElementById("storyTitle");
+            storyTitle.innerHTML = "Title:" + title;
+
+            var storyAuthor = document.getElementById("storyAuthor");
+            storyAuthor.innerHTML = "Author:" + name;
+
+            var storyCreationDate = document.getElementById("creationDate");
+            storyCreationDate.innerHTML = "Creation Date: " + creationDate;
+
+            var published = document.getElementById("published");
+            published.innerHTML = "Published: " + publish;
+
+            var deleteStory = document.getElementById("formElement");
+            deleteStory.setAttribute("action", "/admin/deletestory/" + storyID);
+            
+
+            var editStoryLink = document.getElementById("editStoryLink");
+            editStoryLink.setAttribute("href", "/users/stories/" + storyID);
+
+            var deleteStoryBlock = document.getElementById("deleteStory");
+            deleteStoryBlock.style.display ="block";
+    
+            $("#storyFocus").fadeOut(0); 
+
+            $("#storyFocus").fadeIn( 1500, function(){});
+        }
+
+
+    </script>
+
+
+</div><!-----end page wrapper -------------------------------------------------------------->
+
+<% include ../partials/footer.ejs %>
+
+
+
+         

@@ -1,0 +1,162 @@
+<!--====================================================================================//
+//                                                                                                                                                                          //
+//                                                               ADMIN - USERS PAGE                                                                         //
+//                                                                                                                                                                          //
+//====================================================================================-->
+<% include ../partials/header.ejs %>
+
+    <div id="dashboard" class="wrapper">       
+
+        <div class="dashboardLeft"> <!--start dashboardLeft -->
+            <div class="container"> <!-- start main gallery -->
+                <p class="title2 element padding grey">Members</p> 
+            </div> 
+         
+            <div id="Adminsearch" class="container">
+                <form id="search" method = "post" action="/admin/users"><!--search users-->
+                    <div class="container">
+                        <input class="search medTextRale" type="text" name="search" placeholder="Search Username....">
+                        <input type="submit" class="searchButton" value="Search">
+                    </div>
+                </form>
+            </div>
+        <div class="container"><!-- start user's gallery - container -->
+            <% users.forEach(function(el) { %> 
+                <div class="card" onclick='updateDisplayPanel(
+                    "<%=el.image %>",
+                    "<%=el.name %>",
+                    "<%=el.createdAt %>", 
+                    "<%=el.email %>",
+                    "<%=el.about %>", 
+                    "<%=el._id %>"
+                    )'
+                    >
+                        <div class="element align-left">
+                                <img src="/<%=el.image %>" />
+                                <p class="smallText  grey  cardTextPadding cardTextTopMargin">Username:<%=el.name %></p>
+                        </div>
+                    </div>  <!-- end card -->
+
+            <% }); %>
+        </div><!-- end user's gallery - container --> 
+    </div> <!-- end dashboardLeft -->      
+
+    <div class="dashboardRight"><!--start dashboardRight -->
+        <div class="container ">
+   
+            <hr>
+                <p class="card medTextRale" style= "margin: 5% 0 3% 0;">
+                    ADMIN MODE
+                </p><span class="space"></span>
+                
+                <a href="/admin/stories" class="padding"><p class="adminButton">Stories</p></a>
+                <a href="/users/dashboard" class="padding"><p class="adminButton">Admin</p></a>
+      
+  
+            <hr>
+                
+            <div id="userFocus" class="card">
+                    
+                <div class="element">
+                    <img src="/_avatar.png" id="userImage" class="card-img" />       
+                    <div class="element topMargin">
+                        <p id ="userName" class="medTextRale  grey">Username: <span class="space"></span> Jane Doe</p><br>
+                        <p id ="creationDate" class="smallText grey">Member Since: <span class="space"></span> Time Stamp</p><br>
+                        <p id ="email" class="smallText grey">Email: <span class="space"></span> janedoe@email.com</p><br>
+                        <p id ="userAbout" class="smallText grey">About: <span class="space"></span> Hey there! I'm using StoryMountain</p><br>
+                    </div>
+                </div><!--end element-->
+            </div><!-- end card -->
+
+        </div><!-- end container -->
+        <div class="container">
+                <a  class="btnPad"  id="deleteUserBtn"><p class="transparentBtn padding">Delete</p></a><!-- Trigger/Open The Modal -->
+        </div>
+    </div><!-- end dashboardRight -->
+
+    <div id="myModal" class="modal"> 
+        <span class="close">&times;</span>
+        <div class="container">
+            <!-- =================================start delete user ====================================-->
+            <div  id ="deleteUser">
+                <div class="card  align-left" > 
+                        <form id="formElement" class="element" accept-charset="UTF-8"  method="get" >
+                            <p class="title2  align-left">Delete User</p> 
+                            <p class="smallText">Are you sure you want to delete this Account? </p> 
+                            <p class="smallText">All of the members stories will be deleted also. </p> 
+                            <p class="smallText">This cannot be undone</p> 
+                            <input type="submit" class="formInput submit medText" value="Delete">
+                    </form> 
+                </div>     
+            </div>
+            <!-- ==========================================================================-->
+        </div>   
+    </div> <!--end modal -->
+
+    <script>
+        var users = <%- userString %>
+
+         // EDIT  USERS  - MODAL
+        var modal = document.getElementById("myModal");
+        var deleteUserBtn = document.getElementById("deleteUserBtn");
+        var deleteUser = document.getElementById("deleteUser");
+        var close = document.getElementsByClassName("close")[0]; //gets first element that has classname close
+
+        deleteUserBtn.onclick = function() {
+        modal.style.display = "block";
+        deleteUser.style.display ="block";
+
+        }
+
+        close.onclick = function() {
+            modal.style.display = "none";
+            deleteUser.style.display ="none";
+        }
+        window.onclick = function(event) { //if click anywhere modal will close
+            if (event.target == modal) {
+                modal.style.display = "none";
+                deleteUser.style.display ="none";
+            }
+        }      
+
+        //called on click of user and used to set and update the display panel with user details
+        function updateDisplayPanel(image, username, memberSince, email, about, userID) {
+
+            console.log("Focusing on user id: " + userID);
+
+            var userImage = document.getElementById("userImage");
+            userImage.setAttribute("src", "/"+ image);
+
+            var userName = document.getElementById("userName");
+            userName.innerHTML = "Username:" + username;
+
+
+            var userCreationDate = document.getElementById("creationDate");
+            userCreationDate.innerHTML = "Member Since: " + memberSince ;
+
+            var userEmail = document.getElementById("email");
+            userEmail.innerHTML = "Email:" + email;
+
+            console.log("THis is about: " + about);
+            var userAbout = document.getElementById("userAbout");
+            userAbout.innerHTML = "About:" + about;
+
+     
+            var deleteUser = document.getElementById("formElement");
+            deleteUser.setAttribute("action", "/users/deleteuser/" + userID);
+
+            var deleteUserBlock = document.getElementById("deleteUser");
+            deleteUserBlock.style.display ="block"; //makes delete button visible on click of profie - should not be visible on initial page load(default image and details)
+    
+            $("#userFocus").fadeOut(0); 
+
+            $("#userFocus").fadeIn( 1500, function(){});
+        }
+
+    </script>
+
+</div><!-----end page wrapper -------------------------------------------------------------->
+
+<% include ../partials/footer.ejs %>
+
+

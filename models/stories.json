@@ -1,0 +1,301 @@
+// redundant JSON file - used for initial testing of 'story' structure and manipulation before integrating mongoDB 
+[ 
+    {
+        "chapter": [
+            {
+                "scenes": [
+                    {
+                        "title": "Chapter 0 - Scene 0",
+                        "image": "greenLand.jpg",
+                        "description": "Standing on the Toan Glacier in northern Greenland with your expedition partner Larson, staring down into the black void of the crevasse. You didn't seem to slip, yet suddenly you are falling into the crevasse! A ledge is coming up fast beneath you. You could land on it, but you're falling so fast you're sure to be badly injured. You might only be saving yourself for a slow, agonizing death.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Try to fall towards ledge?",
+                                "targetChapter": "1",
+                                "targetScene": "0"
+                            },
+                            {
+                                "text": "Continue To Fall?",
+                                "targetChapter": "0",
+                                "targetScene": "1"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 1",
+                        "image": "glacierCloseUp.jpg",
+                        "description": "You fall faster down, down, down. The next thing you know, you're floating in air. You begin to lose your fear as you realize that gravity here is so weak - you can fall mile after mile without being hurt. You relax and enjoy drifting through a fantastic twilight world.",
+                        "prompt": "Only one option.....",
+                        "choices": [
+                            {
+                                "text": "Continue To Fall",
+                                "targetChapter": "0",
+                                "targetScene": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 2",
+                        "image": "6_underground.jpg",
+                        "description": "You finally reach the floor, touching down on the mossy bank of an underground stream. You feel so light. You jump - twenty or thirty feet high and float gently to the ground. You suddenly realise you are not alone. A large bird like creature looms only a few yards away. There is something terrifying about it's face, but also angelic... something that draws you to it. You feel like you are being hypnotized.......",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Run?",
+                                "targetChapter": "0",
+                                "targetScene": "4"
+                            },
+                            {
+                                "text": "Hold your ground and face it?",
+                                "targetChapter": "0",
+                                "targetScene": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 3",
+                        "image": "1_underground.jpg",
+                        "description": "The creature walks slowlyy towards you. You notice blue-white pieces of broken shell and realising it is only a fledling, just hatched! Losing your fear, you walk up and stroke the creature. Suddenly above you hear a loud whirring sound. Hovering above you is another, much larger bird. It must be the mother of the fledgling. She swoops toward you.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Run?",
+                                "targetChapter": "0",
+                                "targetScene": "4"
+                            },
+                            {
+                                "text": "Grab the fledgling and use it to shield yourself?",
+                                "targetChapter": "1",
+                                "targetScene": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 4",
+                        "image": "3_underground.jpg",
+                        "description": "You run as fast as you can, hoping that once the mother sees her baby is safe, she will not pursue you. You dart into a cavern. Running, you look back over your sholulder to see if the mother bird is following. At that moment you find yourself falling, towards the earth's surface. You feel like a yo-yo, bouncing up and down, until you finally come to rest at the center of gravity, the point where you will neither rise nor fall - doomed to drift forever.",
+                        "prompt": "THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "scenes": [
+                    {
+                        "title": "Chapter 1 - Scene 0",
+                        "image": "7_underground.jpg",
+                        "description": "Your whole body is racked with pain as you crash onto the ledge. Shaken and bruised but still alive! 'HELP!' you cry. 'HOLD ON!' Larson yells back. Should you warn your friends about the strange force that seemed to pull you in? If you do, they may be agraid to get close enough to rescue you.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Warn Larson?",
+                                "targetChapter": "1",
+                                "targetScene": "1"
+                            },
+                            {
+                                "text": "Just yell, 'Please hurry!'?",
+                                "targetChapter": "1",
+                                "targetScene": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 1",
+                        "image": "5_underground.jpg",
+                        "description": "'Get back from the edge!' you yell. 'I didn't fall, I was pulled in!' For a few moments you hear nothing; then Larson yells, 'Thanks for warning us. There may be some force here we don't understand. But don't worry, we're rigging a brace so we can pull you up without getting too close.' A few moments later you see a climbing rope dangling in front of you. You grab hold, 'I'm ready - pull away!' Slowly foot by foot, Larson pulls you up. You scramble across the ice into his arms. 'Thank goodness we got you! The bottomless Crevasse is a Killer. I think we better quit now.' You both pack up and begin the long trek home. Happy to be alive.",
+                        "prompt": "THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 2",
+                        "image": "8_underground.jpg",
+                        "description": "'Hurry!' you yell. Larsen peers over the side. You watch with horror as his body hurtles by, down into the abyss! Now you are all alone, trapped on a narrow icy ledge. If only you had warned him, you would have saved him and probably yourself too. Now your chances look slim.",
+                        "prompt": "Will you even survive the arctic night - THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 3",
+                        "image": "9_underground.jpg",
+                        "description": "You lunge for the baby bird, hoping that you can use it as  a shield. Even as you move, you feel a rush of wind as the mother dives to protect her baby. Strangely, the mother bird did not harm you. Instead, you feel that you have been put into a trance. Stranger still, you sense that something has set time back -  ",
+                        "prompt": "You are being given a second chance!",
+                        "choices": [
+                            {
+                                "text": "Reset Time",
+                                "targetChapter": "0",
+                                "targetScene": "3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "chapter": [
+            {
+                "scenes": [
+                    {
+                        "title": "Story",
+                        "image": "greenLand.jpg",
+                        "description": "Standing on the Toan Glacier in northern Greenland with your expedition partner Larson, staring down into the black void of the crevasse. You didn't seem to slip, yet suddenly you are falling into the crevasse! A ledge is coming up fast beneath you. You could land on it, but you're falling so fast you're sure to be badly injured. You might only be saving yourself for a slow, agonizing death.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Try to fall towards ledge?",
+                                "targetChapter": "1",
+                                "targetScene": "0"
+                            },
+                            {
+                                "text": "Continue To Fall?",
+                                "targetChapter": "0",
+                                "targetScene": "1"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 1",
+                        "image": "glacierCloseUp.jpg",
+                        "description": "You fall faster down, down, down. The next thing you know, you're floating in air. You begin to lose your fear as you realize that gravity here is so weak - you can fall mile after mile without being hurt. You relax and enjoy drifting through a fantastic twilight world.",
+                        "prompt": "Only one option.....",
+                        "choices": [
+                            {
+                                "text": "Continue To Fall",
+                                "targetChapter": "0",
+                                "targetScene": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 2",
+                        "image": "6_underground.jpg",
+                        "description": "You finally reach the floor, touching down on the mossy bank of an underground stream. You feel so light. You jump - twenty or thirty feet high and float gently to the ground. You suddenly realise you are not alone. A large bird like creature looms only a few yards away. There is something terrifying about it's face, but also angelic... something that draws you to it. You feel like you are being hypnotized.......",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Run?",
+                                "targetChapter": "0",
+                                "targetScene": "4"
+                            },
+                            {
+                                "text": "Hold your ground and face it?",
+                                "targetChapter": "0",
+                                "targetScene": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 3",
+                        "image": "1_underground.jpg",
+                        "description": "The creature walks slowlyy towards you. You notice blue-white pieces of broken shell and realising it is only a fledling, just hatched! Losing your fear, you walk up and stroke the creature. Suddenly above you hear a loud whirring sound. Hovering above you is another, much larger bird. It must be the mother of the fledgling. She swoops toward you.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Run?",
+                                "targetChapter": "0",
+                                "targetScene": "4"
+                            },
+                            {
+                                "text": "Grab the fledgling and use it to shield yourself?",
+                                "targetChapter": "1",
+                                "targetScene": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 0 - Scene 4",
+                        "image": "3_underground.jpg",
+                        "description": "You run as fast as you can, hoping that once the mother sees her baby is safe, she will not pursue you. You dart into a cavern. Running, you look back over your sholulder to see if the mother bird is following. At that moment you find yourself falling, towards the earth's surface. You feel like a yo-yo, bouncing up and down, until you finally come to rest at the center of gravity, the point where you will neither rise nor fall - doomed to drift forever.",
+                        "prompt": "THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "scenes": [
+                    {
+                        "title": "Chapter 1 - Scene 0",
+                        "image": "7_underground.jpg",
+                        "description": "Your whole body is racked with pain as you crash onto the ledge. Shaken and bruised but still alive! 'HELP!' you cry. 'HOLD ON!' Larson yells back. Should you warn your friends about the strange force that seemed to pull you in? If you do, they may be agraid to get close enough to rescue you.",
+                        "prompt": "Will you.....",
+                        "choices": [
+                            {
+                                "text": "Warn Larson?",
+                                "targetChapter": "1",
+                                "targetScene": "1"
+                            },
+                            {
+                                "text": "Just yell, 'Please hurry!'?",
+                                "targetChapter": "1",
+                                "targetScene": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 1",
+                        "image": "5_underground.jpg",
+                        "description": "'Get back from the edge!' you yell. 'I didn't fall, I was pulled in!' For a few moments you hear nothing; then Larson yells, 'Thanks for warning us. There may be some force here we don't understand. But don't worry, we're rigging a brace so we can pull you up without getting too close.' A few moments later you see a climbing rope dangling in front of you. You grab hold, 'I'm ready - pull away!' Slowly foot by foot, Larson pulls you up. You scramble across the ice into his arms. 'Thank goodness we got you! The bottomless Crevasse is a Killer. I think we better quit now.' You both pack up and begin the long trek home. Happy to be alive.",
+                        "prompt": "THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 2",
+                        "image": "8_underground.jpg",
+                        "description": "'Hurry!' you yell. Larsen peers over the side. You watch with horror as his body hurtles by, down into the abyss! Now you are all alone, trapped on a narrow icy ledge. If only you had warned him, you would have saved him and probably yourself too. Now your chances look slim.",
+                        "prompt": "Will you even survive the arctic night - THE END",
+                        "choices": [
+                            {
+                                "text": "Go Back To Start",
+                                "targetChapter": "0",
+                                "targetScene": "0"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Chapter 1 - Scene 3",
+                        "image": "9_underground.jpg",
+                        "description": "You lunge for the baby bird, hoping that you can use it as  a shield. Even as you move, you feel a rush of wind as the mother dives to protect her baby. Strangely, the mother bird did not harm you. Instead, you feel that you have been put into a trance. Stranger still, you sense that something has set time back -  ",
+                        "prompt": "You are being given a second chance!",
+                        "choices": [
+                            {
+                                "text": "Reset Time",
+                                "targetChapter": "0",
+                                "targetScene": "3"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

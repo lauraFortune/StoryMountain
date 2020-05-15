@@ -1,0 +1,52 @@
+<!-- flash messages -->
+<% if(typeof errors != 'undefined') {%>
+    <% errors.forEach(function(err) { %>
+        
+        <div class = "flashMessage">
+            <%= err.msg %>
+            <button  class="tickBox" onclick ="hideMessage()" >
+                    <span style="color: rgb(189, 61, 45);">&#11198;</span>
+            </button>
+        </div>
+        
+    <% }); %>
+    <% } %>
+    
+    <% if(success_msg != '') { %>
+        <div class = "flashMessage">
+                <%= success_msg %>
+                <button  class="tickBox" onclick="hideMessage()">
+                    <span >&times;</span>
+                </button>
+        </div>
+    <% } %>
+    
+    <% if(error_msg != '') { %>
+        <div class = "flashMessage">
+                <%= error_msg %>
+                <button  class="tickBox" onclick="hideMessage()">
+                        <span style="color: rgb(189, 61, 45);">&#11198;</span>
+                </button>
+        </div>
+    <% } %>
+    
+    <% if(error != '') { %>
+        <div class = "flashMessage" >
+                <%= error %>
+                <button  class="tickBox" onclick="hideMessage()">
+                    <span style="color: rgb(189, 61, 45);">&#11198;</span>
+                </button>
+            </div>
+    <% } %>
+
+    <script>
+        //hide flash message onclick
+        var flashMessage = document.getElementsByClassName('flashMessage'); //flashMessage is an array - due to getting 'ELEMENTS' by className
+
+        function hideMessage() { //loop through and hide all open flashMessages 
+            for (var i = 0; i < flashMessage.length; i++) {
+                console.log(flashMessage[i].innerText);
+                flashMessage[i].style.display = 'none';
+            }
+        }
+    </script>
