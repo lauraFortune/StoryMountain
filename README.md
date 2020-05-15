@@ -76,7 +76,7 @@ If connecting your gmail account for nodemailer you must 'enable less secure app
 1. Clone project 
 
    ```bash
-   git clone https://github.com/lauraFortune/gitTest.git
+   git clone https://github.com/lauraFortune/StoryMountain.git
    ```
 2. Create a .env file based on the .env.example
 
