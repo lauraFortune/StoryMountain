@@ -29,6 +29,7 @@ This end of year project(Dec 2019) takes the form of a website database, which  
 
 
 ## Demos 
+Click the following Images to view demos of the site in action:
 
 - Create an account & Password reset
 [![login](https://user-images.githubusercontent.com/48602973/74594555-d1194280-502f-11ea-993d-0e15976e1680.png)](https://youtu.be/M65T6nCV3J8)
