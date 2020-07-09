@@ -1,9 +1,7 @@
 
 # <img src="https://user-images.githubusercontent.com/48602973/74787675-a9341400-52a7-11ea-83ec-7fb9adc21713.png" width="60">  StoryMountain 
 
-[storymountain.herokuapp.com](https://storymountain.herokuapp.com/)
-
-
+[storymountain.herokuapp.com](https://storymountain.herokuapp.com/)<br>
 
 Full CRUD Web application/tool designed to allow users to create:
 - Branching narrative fiction
