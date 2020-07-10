@@ -82,15 +82,15 @@ If connecting your gmail account for nodemailer you must 'enable less secure app
    ```bash
    git clone https://github.com/lauraFortune/StoryMountain.git
    ```
-2. Create a new file inside the root directory and name it '.env'. Populate your '.env' file based on the provided '.env.example' file:
+2. Create a new file inside the root directory and name it '.env'. Populate your '.env' file based on the provided '.env.example' file.
+   Example '.env' file:
 
    ```bash
    PORT = 3000
-   DB = mongodb+srv://clustername:password@cluster0-japo2.mongodb.net/databaseName?retryWrites=true&w=majority
-
-   EMAIL_SERVICE = gmail
-   EMAIL_ACOUNT = yourAccount.gmail.com
-   EMAIL_PASSWORD = yourPassword
+   HOST = den1.mysql9.gear.host
+   USER = myNewDatabase
+   DB_PASSWORD =  Yh~qTS9mR~d_
+   DB = myNewDatabase
    ```
 
 3. Run app
