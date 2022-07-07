@@ -20,7 +20,7 @@
     "express-fileupload": "^1.1.6",
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.7.12",
     "node-localstorage": "^2.1.4",
     "nodemailer": "^6.4.0",
