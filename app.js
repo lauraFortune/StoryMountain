@@ -849,8 +849,11 @@ app.post('/getMedia', (req, res) => {
 
 //========================= MONGOOSE DATABASE CONNECTION SETUP =================================================//
 const DB = process.env.DB;//pulls in the DB variable from .env file
-mongoose.connect(DB).then(() => console.log('DB CONNECTION SUCCESSFUL!'));
-
+mongoose.connect(DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,  
+}).then(() => console.log('DB CONNECTION SUCCESSFUL!'))
+  .catch(err => console.error('DB CONNECTION ERROR!', err));
 //========================= END MONGOOSE===================================================================//
 
 //========================= START THE SERVER =================================================================//
