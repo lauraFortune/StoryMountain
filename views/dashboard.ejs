@@ -125,7 +125,7 @@
                             <label class="smallText" >Profile Image:</label>
                             <input class="formInput" type="file" name="sampleFile" value="<%= user.image %>" title="Jpg's or Png's only" required pattern=".*\.(jpe?g|png)$"  />
                             <label class="smallText" >About me:</label>
-                            <input class="formInput"  type="text" name="about" placeholder="About me...." value="<%= user.about %>"  title="Letters, numbers, #, !, ' and spaces(at least one letter or number)" required pattern="[A-Za-z0-9 #_]*[A-Za-z0-9][A-Za-z0-9 #!'_]*$" autofocus/>
+                            <input class="formInput"  type="text" name="about" placeholder="About me...." value="<%= user.about %>"  title="Letters, numbers, spaces, ., ',', #, !, and '-'" required pattern="[A-Za-z0-9][A-Za-z0-9.,#!'_]*" autofocus/>
                             <input type="submit" class="formInput submit medText" value="Edit">
 
                         </form> 
