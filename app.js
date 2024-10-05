@@ -43,12 +43,14 @@ const User = require('./models/userModel.js'); //imports the User Model
 //============================ CONFIGURATION  =======================================================//
 app.use(helmet({
     contentSecurityPolicy: {
+        useDefaults: true,
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: [
-                "'self",
+                "'self'",
                 "https://ajax.googleapis.com", // jQuery CDN,
                 "https://static.cloudflareinsights.com",
+                "'unsafe-inline'"
             ],
             styleSrc: [
                 "'self'",
@@ -60,6 +62,11 @@ app.use(helmet({
                 "'self'",
                 "https://fonts.gstatic.com",
                 "https://use.fontawesome.com",
+            ],
+            imgSrc: [
+                "'self'",
+                "data:",
+                baseUrl
             ]
         }
     }
