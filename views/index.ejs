@@ -148,7 +148,7 @@
                         displayStory(storyObject); // 4. calls displayStory function and passes returned storyObject as param
                     }
                 };
-                xmlhttp.open("POST", "http://localhost:3000/stories"); //opens url 
+                xmlhttp.open("POST", baseUrl + "/stories"); //opens url 
                 xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); //changes request to take json
                 xmlhttp.send(JSON.stringify( {"id" : id } ) ); // sends id in json as request to stories route
             }
