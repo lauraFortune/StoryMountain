@@ -13,7 +13,7 @@ const fs = require('fs');
 // environment variables
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
-// HELMET CONFIGURATION
+// HELMET_CONFIGURATION
 app.use(helmet({
     contentSecurityPolicy: {
         useDefaults: true,
