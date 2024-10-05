@@ -157,7 +157,7 @@ var backLInk = document.getElementById("backLink");
 
         var formData = new FormData();
         formData.append('myFile', file);
-        xhr.open('post', 'http://localhost:3000/uploadStoryImage', true);
+        xhr.open('post', baseUrl + '/uploadStoryImage', true);
         xhr.send(formData);
 
     }
