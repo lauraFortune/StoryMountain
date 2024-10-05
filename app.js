@@ -13,6 +13,38 @@ const fs = require('fs');
 // environment variables
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
+// HELMET CONFIGURATION
+app.use(helmet({
+    contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: [
+                "'self'",
+                "https://ajax.googleapis.com", // jQuery CDN,
+                "https://static.cloudflareinsights.com",
+                "'unsafe-inline'"
+            ],
+            styleSrc: [
+                "'self'",
+                "'unsafe-inline'",
+                "https://fonts.googleapis.com", // google fonts
+                "https://use.fontawesome.com", // font awesome
+            ],
+            fontSrc: [
+                "'self'",
+                "https://fonts.gstatic.com",
+                "https://use.fontawesome.com",
+            ],
+            imgSrc: [
+                "'self'",
+                "data:",
+                "https://storymountain.onrender.com"
+            ]
+        }
+    }
+})); //sets security HTTP headers - high in stack to ensure is implemented early
+
 //password reset dependencies
 const nodemailer = require("nodemailer"); 
 const async = require("async")//used to create an async waterfall function for P reset - array of functions 
@@ -41,36 +73,6 @@ const Story = require('./models/storyModel.js'); //imports the Story Model mongo
 const User = require('./models/userModel.js'); //imports the User Model           
 
 //============================ CONFIGURATION  =======================================================//
-app.use(helmet({
-    contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: [
-                "'self'",
-                "https://ajax.googleapis.com", // jQuery CDN,
-                "https://static.cloudflareinsights.com",
-                "'unsafe-inline'"
-            ],
-            styleSrc: [
-                "'self'",
-                "'unsafe-inline'",
-                "https://fonts.googleapis.com", // google fonts
-                "https://use.fontawesome.com", // font awesome
-            ],
-            fontSrc: [
-                "'self'",
-                "https://fonts.gstatic.com",
-                "https://use.fontawesome.com",
-            ],
-            imgSrc: [
-                "'self'",
-                "data:",
-                baseUrl
-            ]
-        }
-    }
-})); //sets security HTTP headers - high in stack to ensure is implemented early
 app.set('view engine', 'ejs');
 app.use(express.static("views"));
 app.use(express.static("scripts"));
