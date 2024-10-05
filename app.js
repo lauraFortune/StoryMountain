@@ -13,38 +13,8 @@ const fs = require('fs');
 // environment variables
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
-// HELMET_CONFIGURATION
-app.use(helmet({
-    contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: [
-                "'self'",
-                "https://ajax.googleapis.com", // jQuery CDN,
-                "https://static.cloudflareinsights.com",
-                "https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015",
-                "'unsafe-inline'"
-            ],
-            styleSrc: [
-                "'self'",
-                "'unsafe-inline'",
-                "https://fonts.googleapis.com", // google fonts
-                "https://use.fontawesome.com", // font awesome
-            ],
-            fontSrc: [
-                "'self'",
-                "https://fonts.gstatic.com",
-                "https://use.fontawesome.com",
-            ],
-            imgSrc: [
-                "'self'",
-                "data:",
-                "https://storymountain.onrender.com"
-            ]
-        }
-    }
-})); //sets security HTTP headers - high in stack to ensure is implemented early
+// HELMET CONFIGURATION
+app.use(helmet()); //sets security HTTP headers - high in stack to ensure is implemented early
 
 //password reset dependencies
 const nodemailer = require("nodemailer"); 
