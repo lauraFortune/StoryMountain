@@ -10,7 +10,8 @@ mongoose.set('useFindAndModify', false);
 const path = require('path');
 const fs = require('fs');
 
-
+// environment variables
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 //password reset dependencies
 const nodemailer = require("nodemailer"); 
@@ -145,7 +146,12 @@ app.post('/searchStories', async function (req, res) { //callback request and re
                     if ( stories != null ) { // if found stories..
     
                         var storiesJson = JSON.stringify(stories);
-                        res.render('index', {stories,storiesJson, topFour}); //send story object and stringified version 
+                        res.render('index', {
+                            stories,
+                            storiesJson,
+                            topFour,
+                            baseUrl
+                        }); //send story object and stringified version 
 
                     } else {
 
@@ -182,7 +188,12 @@ app.get('/', async function (req, res) {
                 topFour = stories; 
 
                var storiesJson = JSON.stringify(stories);
-               res.render('index', {stories, storiesJson, topFour}); //send story object and stringified version
+               res.render('index', {
+                   stories, 
+                   storiesJson, 
+                   topFour,
+                   baseUrl
+               }); //send story object and stringified version
   
             }
         }
@@ -435,7 +446,12 @@ app.get('/users/stories/:id', auth.isLoggedIn, function (req, res) { //callback 
             var user = req.user; //current logged in user
             userString = JSON.stringify(user); 
             processedStoryString = JSON.stringify(story);
-            res.render('storyEditor', {processedStoryString, user, userString});
+            res.render('storyEditor', {
+                processedStoryString, 
+                user, 
+                userString,
+                baseUrl
+            });
 
         }
 
