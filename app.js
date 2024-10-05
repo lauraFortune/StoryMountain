@@ -41,7 +41,29 @@ const Story = require('./models/storyModel.js'); //imports the Story Model mongo
 const User = require('./models/userModel.js'); //imports the User Model           
 
 //============================ CONFIGURATION  =======================================================//
-app.use(helmet()); //sets security HTTP headers - high in stack to ensure is implemented early
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: [
+                "'self",
+                "https://ajax.googleapis.com", // jQuery CDN,
+                "https://static.cloudflareinsights.com",
+            ],
+            styleSrc: [
+                "'self'",
+                "'unsafe-inline'",
+                "https://fonts.googleapis.com", // google fonts
+                "https://use.fontawesome", // font awesome
+            ],
+            fontSrc: [
+                "'self'",
+                "https://fonts.gstatic.com",
+                "https://use.fontawesome.com",
+            ]
+        }
+    }
+})); //sets security HTTP headers - high in stack to ensure is implemented early
 app.set('view engine', 'ejs');
 app.use(express.static("views"));
 app.use(express.static("scripts"));
