@@ -715,7 +715,7 @@ function updateCurrentScene(){ //called when change scene value in main drop dow
             
        }
     };
-    xmlhttp.open("PUT", "http://localhost:3000/saveJson");
+    xmlhttp.open("PUT", baseUrl + "/saveJson");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send( JSON.stringify(story) );
 }
@@ -734,7 +734,7 @@ function loadUserImages() { //is called onclick of submit Json button
             showPopupMessage("User Images Loaded");            
        }
     };
-    xmlhttp.open("POST", "http://localhost:3000/getMedia");
+    xmlhttp.open("POST", baseUrl + "/getMedia");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send();
 }
