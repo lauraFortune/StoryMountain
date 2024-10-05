@@ -25,6 +25,11 @@ app.use(helmet({
                 "https://static.cloudflareinsights.com",
                 "'unsafe-inline'"
             ],
+            scriptSrcElem: [
+                "'self'",
+                "https://ajax.googleapis.com", // jQuery CDN,
+                "https://static.cloudflareinsights.com",
+            ],
             styleSrc: [
                 "'self'",
                 "'unsafe-inline'",
