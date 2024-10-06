@@ -78,10 +78,10 @@
 </div><!--########### END OVER ALL PAGEWRAPPER ##############-->     
 
 <script>
-var baseUrl = "<%= baseUrl >";
+var baseUrl = "<%= baseUrl %>";
 var story = <%- processedStoryString %>;
 var user = <%- userString %>;
-var backLInk = document.getElementById("backLink");
+var backLink = document.getElementById("backLink");
     if(user.admin == true && story.user != user._id) { // 1. if user is admin and story does not belong to admin
 
     backLInk.href ="/admin/stories"; // 2. send admin user back to admin dash
