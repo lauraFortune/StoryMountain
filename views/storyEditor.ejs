@@ -84,9 +84,9 @@ var user = <%- userString %>;
 var backLink = document.getElementById("backLink");
     if(user.admin == true && story.user != user._id) { // 1. if user is admin and story does not belong to admin
 
-    backLInk.href ="/admin/stories"; // 2. send admin user back to admin dash
+    backLink.href ="/admin/stories"; // 2. send admin user back to admin dash
 } else{ // 3. else send back to user dash(if admin are editing their own story they should be sent back to their own profile)
-    backLInk.href ="/users/dashboard"; 
+    backLink.href ="/users/dashboard"; 
 }
 
 </script>
