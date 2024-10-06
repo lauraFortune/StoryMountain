@@ -438,7 +438,7 @@ app.post('/uploadStoryImage',  auth.isLoggedIn, async function async (req, res) 
 app.get('/users/stories/:id', auth.isLoggedIn, function (req, res) { //callback request and response - will come back with error or all stories
 
     Story.findById(req.params.id, function (error, story) {
-        if (error) {
+        if (error || !story) {
             res.status(404).json({ //404 not found - server not found anything matching url given
                 status: 'Failure :(',
                 message: "Error - no such id"
@@ -447,8 +447,8 @@ app.get('/users/stories/:id', auth.isLoggedIn, function (req, res) { //callback 
         else {
 
             var user = req.user; //current logged in user
-            userString = JSON.stringify(user); 
-            processedStoryString = JSON.stringify(story);
+            var userString = JSON.stringify(user); 
+            var processedStoryString = JSON.stringify(story);
             res.render('storyEditor', {
                 processedStoryString, 
                 user, 
